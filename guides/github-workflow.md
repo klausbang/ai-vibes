@@ -6,6 +6,197 @@ This guide explains the complete GitHub workflow for collaborating on the AI Vib
 
 Our GitHub workflow is designed to maximize collaboration efficiency while leveraging AI tools like GitHub Copilot for enhanced productivity.
 
+---
+
+## 📅 Daily Git & GitHub Workflow Guide
+*Print-friendly guide for daily development workflow*
+
+### 🌅 Morning Routine (First Thing)
+```bash
+# 1. Navigate to your project
+cd "C:\Users\AU000NK6\OneDrive - WSA\Documents\Python\AI_Vibes"
+
+# 2. Check current status
+git status
+git branch
+
+# 3. Switch to main branch and sync with remote
+git checkout main
+git pull origin main
+
+# 4. Check if there are updates from other developers
+git fetch origin
+git log --oneline -5  # See recent commits
+
+# 5. Create or switch to your feature branch
+git checkout -b feature/daily-work-$(date +%Y%m%d)
+# OR switch to existing branch:
+# git checkout feature/your-existing-branch
+```
+
+### 💼 During the Day (Intermediate Saves)
+```bash
+# Every 1-2 hours or after completing a logical unit of work:
+
+# 1. Check what you've changed
+git status
+git diff
+
+# 2. Stage your changes
+git add specific-file.py  # For specific files
+# OR
+git add .  # For all changes (use carefully)
+
+# 3. Commit with descriptive message
+git commit -m "wip: describe what you accomplished
+
+- Brief bullet points of changes made
+- Note any AI assistance used
+- Mark as work-in-progress if incomplete
+
+AI-Assistance: [Tool used, if any]
+Human-Contribution: [Your specific contributions]"
+
+# 4. Optional: Push to backup your work
+git push origin feature/your-branch-name
+```
+
+### 🌆 End of Day Routine (Before Closing)
+```bash
+# 1. Final status check
+git status
+
+# 2. Commit any remaining work
+git add .
+git commit -m "feat/fix: final changes for [date]
+
+- Summarize all work completed today
+- List any remaining TODOs
+- Note testing status
+
+AI-Assistance: [Summary of AI help received]
+Human-Contribution: [Your design decisions and implementations]"
+
+# 3. Push to GitHub (backup your work)
+git push origin feature/your-branch-name
+
+# 4. Optional: Create Pull Request if feature is complete
+# Go to GitHub.com and create PR from your branch to main
+
+# 5. Clean up (optional)
+# git checkout main
+# git branch -d feature/completed-branch  # Only if merged
+```
+
+### 🔄 Daily Collaboration Flow with Two Developers
+
+```mermaid
+sequenceDiagram
+    participant Dev1 as Developer 1 (Klaus)
+    participant Local1 as Klaus Local Git
+    participant GitHub as GitHub Repository
+    participant Local2 as Dev2 Local Git
+    participant Dev2 as Developer 2
+
+    Note over Dev1,Dev2: 🌅 Morning Routine
+    Dev1->>Local1: git checkout main
+    Dev1->>Local1: git pull origin main
+    Dev1->>Local1: git checkout -b feature/klaus-work
+    
+    Dev2->>Local2: git checkout main
+    Dev2->>Local2: git pull origin main
+    Dev2->>Local2: git checkout -b feature/dev2-work
+
+    Note over Dev1,Dev2: 💼 During the Day - Parallel Work
+    loop Every 1-2 hours
+        Dev1->>Local1: Edit files with AI assistance
+        Dev1->>Local1: git add . && git commit
+        Dev1->>GitHub: git push origin feature/klaus-work
+        
+        Dev2->>Local2: Edit different files
+        Dev2->>Local2: git add . && git commit
+        Dev2->>GitHub: git push origin feature/dev2-work
+    end
+
+    Note over Dev1,Dev2: 🔄 Mid-day Sync (if needed)
+    Dev1->>GitHub: git fetch origin
+    Dev1->>Local1: Check for conflicts
+    alt If working on same files
+        Dev1->>Dev2: Communicate about changes
+        Dev1->>Local1: git merge origin/main
+        Dev1->>Local1: Resolve conflicts with AI help
+        Dev1->>GitHub: git push origin feature/klaus-work
+    end
+
+    Note over Dev1,Dev2: 🌆 End of Day
+    Dev1->>Local1: Final git add . && git commit
+    Dev1->>GitHub: git push origin feature/klaus-work
+    Dev1->>GitHub: Create Pull Request (if ready)
+    
+    Dev2->>Local2: Final git add . && git commit
+    Dev2->>GitHub: git push origin feature/dev2-work
+    Dev2->>GitHub: Create Pull Request (if ready)
+
+    Note over Dev1,Dev2: 🔍 Code Review & Integration
+    Dev2->>GitHub: Review Klaus's PR
+    Dev1->>GitHub: Review Dev2's PR
+    GitHub->>GitHub: Merge approved PRs to main
+    
+    Note over Dev1,Dev2: 🔄 Next Day Preparation
+    Dev1->>Local1: git checkout main && git pull
+    Dev2->>Local2: git checkout main && git pull
+```
+
+### 🚨 Quick Emergency Commands
+```bash
+# Undo last commit (keep changes)
+git reset --soft HEAD~1
+
+# Discard all local changes (DANGEROUS!)
+git checkout -- .
+
+# Save work temporarily
+git stash
+git stash pop  # Restore later
+
+# Check what others have done
+git log --oneline --graph --all -10
+
+# Quick conflict resolution
+git status  # See conflicted files
+# Edit files to resolve conflicts
+git add .
+git commit -m "resolve: merge conflicts"
+```
+
+### 💡 Daily Best Practices
+- **Commit early, commit often** - Don't lose work
+- **Write meaningful commit messages** - Help future you
+- **Pull before pushing** - Avoid conflicts
+- **Communicate with team** - Coordinate on shared files
+- **Use AI attribution** - Document AI assistance
+- **Test before committing** - Ensure code works
+- **Push daily** - Backup your work to GitHub
+
+### 📋 Daily Checklist
+**Morning:**
+- [ ] Sync with main branch (`git pull origin main`)
+- [ ] Create/switch to feature branch
+- [ ] Check for team updates
+
+**During Day:**
+- [ ] Commit every 1-2 hours
+- [ ] Include AI attribution in commits
+- [ ] Push important work to GitHub
+
+**End of Day:**
+- [ ] Final commit of all work
+- [ ] Push to GitHub repository
+- [ ] Create PR if feature complete
+- [ ] Communicate status to team
+
+---
+
 ## 🚀 Initial Repository Setup (Project Owner)
 
 ### Step 1: Create GitHub Repository
