@@ -33,6 +33,18 @@ cd "C:\Users\AU000NK6\OneDrive - WSA\Documents\Python\AI_Vibes"
 # Initialize Git repository
 git init
 
+# Configure Git user for this project (project-specific settings)
+git config user.name "Klaus Bang Andersen"
+git config user.email "klaus.bang.andersen@gmail.com"
+
+# Optional: Set these as global defaults for all Git repositories
+# git config --global user.name "Klaus Bang Andersen"
+# git config --global user.email "klaus.bang.andersen@gmail.com"
+
+# Verify the configuration
+git config user.name
+git config user.email
+
 # Add all files to staging
 git add .
 
@@ -267,6 +279,60 @@ git checkout -b feature/your-feature-name
 # Write tests and documentation
 # Commit changes regularly
 ```
+
+### 2.1. Committing Your Changes
+
+During development, you'll need to commit your changes regularly. Here's the process:
+
+```bash
+# Check what files have been modified
+git status
+
+# See the specific changes made to files
+git diff
+
+# Stage specific files for commit (recommended)
+git add path/to/specific/file.py
+git add guides/github-workflow.md
+
+# Or stage all modified files (use with caution)
+git add .
+
+# Commit with descriptive message and AI attribution
+git commit -m "docs: update GitHub workflow with commit instructions
+
+- Added detailed commit workflow section
+- Included AI attribution examples
+- Enhanced documentation for ongoing development
+
+AI-Assistance: GitHub Copilot for documentation structure
+Human-Contribution: Workflow design, specific instructions"
+
+# Push changes to your fork
+git push origin feature/your-feature-name
+```
+
+#### Quick Commit Workflow for Modified Files
+```bash
+# For the current modified file (github-workflow.md)
+git add guides/github-workflow.md
+git commit -m "docs: add committer configuration to GitHub setup
+
+- Updated Step 2 with Klaus Bang Andersen as default committer
+- Added project-specific and global Git configuration options
+- Included verification steps for Git configuration
+
+AI-Assistance: GitHub Copilot for documentation formatting
+Human-Contribution: Specific configuration requirements, workflow design"
+git push origin feature/update-git-config
+```
+
+#### Best Practices for Commits
+- **Commit frequently**: Don't wait until everything is perfect
+- **Use descriptive messages**: Follow conventional commit format
+- **Include AI attribution**: Always document AI assistance used
+- **Review before committing**: Use `git diff` to check your changes
+- **Test before committing**: Ensure your changes don't break anything
 
 ### 3. Code Review & Merge
 ```bash
